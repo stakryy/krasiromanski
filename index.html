@@ -593,13 +593,13 @@ function buildCarousel(){
     const div=document.createElement('div');
     div.className='card';
     div.innerHTML=`
-      <div class="card-img" style="height:100%">
+      <div class="card-img" style="height:84%">
         <img src="${c.img}" alt="Before" style="object-position:left center">
         <div class="card-divider"></div>
         <img src="${c.img}" alt="After" style="object-position:right center">
       </div>
       <div class="card-bar">
-        <span class="card-name">${c.weight}</span>
+        <span class="card-name">${c.name} / ${c.weight}</span>
         <span class="card-tag">Реален клиент</span>
       </div>`;
     track.appendChild(div);
