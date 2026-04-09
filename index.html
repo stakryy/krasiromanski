@@ -716,13 +716,51 @@ function nextStep(){
   if(currentStep<totalSteps)showStep(currentStep+1);
 }
 function prevStep(){if(currentStep>1)showStep(currentStep-1);}
-function submitForm(){
+async function submitForm(){
+  console.log('submitForm called');
   const sel=document.querySelector('input[name="invest"]:checked');
+  console.log('invest selected:', sel ? sel.value : 'NONE');
   if(!sel){showRadioError('invest','Моля избери отговор');return;}
-  document.getElementById('formSteps').style.display='none';
-  document.getElementById('progressFill').style.width='100%';
-  document.getElementById('pctLabel').textContent='100%';
-  document.getElementById('thankyou').classList.add('active');
+
+  // Collect all data
+  const data = {
+    ime: document.getElementById('f-name').value.trim(),
+    telefon: document.getElementById('f-phone').value.trim(),
+    cel: document.querySelector('input[name="goal"]:checked')?.value || '',
+    ezhednevie: document.querySelector('input[name="daily"]:checked')?.value || '',
+    provali: document.querySelector('input[name="fail"]:checked')?.value || '',
+    period: document.querySelector('input[name="term"]:checked')?.value || '',
+    zashto_sega: document.getElementById('f-why').value.trim(),
+    investiciq: sel.value,
+    _subject: 'Нова заявка от krasiromanski.com'
+  };
+
+  // Show loading state
+  const submitBtn = document.querySelector('.btn-next[onclick="submitForm()"]');
+  if(submitBtn){ submitBtn.textContent = 'Изпращане...'; submitBtn.disabled = true; }
+
+  console.log('Sending data:', data);
+  try {
+    const response = await fetch('https://formspree.io/f/xdapvyzj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    console.log('Response status:', response.status, response.ok);
+    if(response.ok){
+      document.getElementById('formSteps').style.display='none';
+      document.getElementById('progressFill').style.width='100%';
+      document.getElementById('pctLabel').textContent='100%';
+      document.getElementById('thankyou').classList.add('active');
+    } else {
+      if(submitBtn){ submitBtn.textContent = 'ИЗПРАТИ ЗАЯВКАТА →'; submitBtn.disabled = false; }
+      alert('Грешка при изпращане. Моля опитай отново.');
+    }
+  } catch(err){
+    if(submitBtn){ submitBtn.textContent = 'ИЗПРАТИ ЗАЯВКАТА →'; submitBtn.disabled = false; }
+    alert('Грешка при изпращане. Моля опитай отново.');
+  }
 }
 
 // Option selection
