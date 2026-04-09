@@ -717,7 +717,9 @@ function nextStep(){
 }
 function prevStep(){if(currentStep>1)showStep(currentStep-1);}
 async function submitForm(){
+  console.log('submitForm called');
   const sel=document.querySelector('input[name="invest"]:checked');
+  console.log('invest selected:', sel ? sel.value : 'NONE');
   if(!sel){showRadioError('invest','Моля избери отговор');return;}
 
   // Collect all data
@@ -737,6 +739,7 @@ async function submitForm(){
   const submitBtn = document.querySelector('.btn-next[onclick="submitForm()"]');
   if(submitBtn){ submitBtn.textContent = 'Изпращане...'; submitBtn.disabled = true; }
 
+  console.log('Sending data:', data);
   try {
     const response = await fetch('https://formspree.io/f/xdapvyzj', {
       method: 'POST',
@@ -744,6 +747,7 @@ async function submitForm(){
       body: JSON.stringify(data)
     });
 
+    console.log('Response status:', response.status, response.ok);
     if(response.ok){
       document.getElementById('formSteps').style.display='none';
       document.getElementById('progressFill').style.width='100%';
