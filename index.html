@@ -242,6 +242,17 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
   .footer-inner{flex-direction:column;text-align:center}
   .footer-links{flex-wrap:wrap;justify-content:center}
 }
+
+/* GDPR / TERMS MODAL */
+.legal-bg{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+.legal-bg.open{display:flex}
+.legal-box{background:var(--card);border:1px solid var(--border);border-radius:10px;width:100%;max-width:680px;margin:auto;overflow:hidden}
+.legal-header{background:var(--bg2);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222;position:sticky;top:0}
+.legal-header h3{font-size:15px;font-weight:900;text-transform:uppercase;color:var(--gold)}
+.legal-close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer}
+.legal-body{padding:32px 28px;font-size:14px;color:var(--muted);line-height:1.8}
+.legal-body h4{font-size:13px;font-weight:700;text-transform:uppercase;color:var(--text);margin:20px 0 8px;letter-spacing:.1em}
+.legal-body p{margin-bottom:12px}
 </style>
 </head>
 <body>
@@ -304,7 +315,7 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
   <div class="who-inner">
     <div class="who-header reveal">
       <p class="label">За кого е програмата</p>
-      <h2>АКО СЕ ПОЗНАВАШ В ПОНЕ ЕДНО ОТ СЛЕДНИТЕ...</h2>
+      <h2>АКО СЕ ПРИПОЗНАВАШ В ПОНЕ ЕДНО ОТ ТЕЗИ...</h2>
     </div>
     <div class="pain-grid">
       <div class="pain-card reveal">
@@ -430,10 +441,12 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
   <div class="final-cta-glow"></div>
   <div class="final-cta-inner reveal">
     <p class="label">Следваща стъпка</p>
-    <h2>ГОТОВ СИ ДА<br><span class="gold">ПРОМЕНИШ ВСИЧКО?</span></h2>
+    <h2>ГОТОВ ЛИ СИ ДА<br><span class="gold">ПРОМЕНИШ ВСИЧКО?</span></h2>
     <p>Попълни формуляра. Не приемам всеки — само хора готови за дисциплина и дълготраен резултат.</p>
     <button class="btn btn-gold" onclick="openModal()" style="font-size:16px;padding:20px 52px">Започни Промяната</button>
-    <p class="final-cta-note">Отнема 3 минути.</p>
+    <p class="final-cta-note">Отнема 3 минути. &nbsp;
+  <a href="#" onclick="openGdpr(event)" style="color:#555;text-decoration:underline;font-size:11px">GDPR политика</a>
+</p>
   </div>
 </section>
 
@@ -449,7 +462,12 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
     </div>
     <a href="https://instagram.com/coach_romanski" target="_blank" style="color:var(--gold);font-size:20px;text-decoration:none">📷</a>
   </div>
-  <div class="footer-copy">© 2026 coach_romanski · Всички права запазени</div>
+  <div class="footer-copy">
+  © 2026 coach_romanski · Всички права запазени &nbsp;·&nbsp;
+  <a href="#" onclick="openGdpr(event)" style="color:#555;text-decoration:underline">GDPR</a>
+  &nbsp;·&nbsp;
+  <a href="#" onclick="openTerms(event)" style="color:#555;text-decoration:underline">Общи условия</a>
+</div>
 </footer>
 
 <!-- MODAL -->
@@ -462,7 +480,7 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
     <div class="modal-body">
       <!-- HERO -->
       <div class="modal-hero">
-        <h2>ГОТОВ СИ ДА<br><span class="gold">ПРОМЕНИШ ВСИЧКО?</span></h2>
+        <h2>ГОТОВ ЛИ СИ ДА<br><span class="gold">ПРОМЕНИШ ВСИЧКО?</span></h2>
       </div>
       <div class="modal-note">Ще се свържа с теб лично и ще ти обясня следващите стъпки.</div>
       <!-- PROGRESS -->
@@ -795,6 +813,79 @@ document.querySelectorAll('.option').forEach(opt=>{
     this.classList.add('selected');
   });
 });
+
+function openGdpr(e){e.preventDefault();document.getElementById('gdprBg').classList.add('open');document.body.style.overflow='hidden';}
+function closeGdpr(){document.getElementById('gdprBg').classList.remove('open');document.body.style.overflow='';}
+function openTerms(e){e.preventDefault();document.getElementById('termsBg').classList.add('open');document.body.style.overflow='hidden';}
+function closeTerms(){document.getElementById('termsBg').classList.remove('open');document.body.style.overflow='';}
 </script>
+
+<!-- GDPR MODAL -->
+<div class="legal-bg" id="gdprBg" onclick="if(event.target===this)closeGdpr()">
+  <div class="legal-box">
+    <div class="legal-header">
+      <h3>GDPR — Защита на личните данни</h3>
+      <button class="legal-close" onclick="closeGdpr()">✕</button>
+    </div>
+    <div class="legal-body">
+      <p>Последна актуализация: Април 2026 г.</p>
+
+      <h4>1. Администратор на данни</h4>
+      <p>Красимир Романски, coach_romanski, krasiromanski.com. За въпроси относно личните ви данни: coach_romanski@gmail.com</p>
+
+      <h4>2. Какви данни събираме</h4>
+      <p>При попълване на формуляра събираме: трите ви имена, телефонен номер и отговори на въпросите в анкетата. Не събираме финансова информация, ЕГН или здравни данни.</p>
+
+      <h4>3. Цел на обработката</h4>
+      <p>Данните се използват единствено за осъществяване на контакт с вас относно фитнес коучинг услугите ни. Не продаваме и не споделяме данните ви с трети страни.</p>
+
+      <h4>4. Съхранение</h4>
+      <p>Данните се съхраняват в защитена Google Sheets таблица с ограничен достъп. Съхраняваме данните до 12 месеца от момента на попълване или до ваше искане за изтриване.</p>
+
+      <h4>5. Вашите права</h4>
+      <p>Имате право на достъп, коригиране и изтриване на личните ви данни по всяко време. За упражняване на правата си пишете на: coach_romanski@gmail.com</p>
+
+      <h4>6. Бисквитки (Cookies)</h4>
+      <p>Сайтът използва само технически необходими бисквитки. Не използваме бисквитки за проследяване или реклама без вашето изрично съгласие.</p>
+
+      <h4>7. Правно основание</h4>
+      <p>Обработката на данните се основава на вашето доброволно съгласие, изразено чрез попълване на формуляра (чл. 6, пар. 1, б. "а" от GDPR).</p>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS MODAL -->
+<div class="legal-bg" id="termsBg" onclick="if(event.target===this)closeTerms()">
+  <div class="legal-box">
+    <div class="legal-header">
+      <h3>Общи условия</h3>
+      <button class="legal-close" onclick="closeTerms()">✕</button>
+    </div>
+    <div class="legal-body">
+      <p>Последна актуализация: Април 2026 г.</p>
+
+      <h4>1. Общи положения</h4>
+      <p>Настоящите общи условия уреждат отношенията между Красимир Романски (coach_romanski) и потребителите на уебсайта krasiromanski.com.</p>
+
+      <h4>2. Услуги</h4>
+      <p>Сайтът предлага информация относно онлайн фитнес коучинг услуги. Попълването на формуляра не представлява сключване на договор, а само заявка за контакт.</p>
+
+      <h4>3. Отказ от отговорност</h4>
+      <p>Информацията на сайта е с общообразователна цел. Преди започване на тренировъчна програма или диета се консултирайте с лекар. Coach_romanski не носи отговорност за резултати, различни от индивидуалните очаквания.</p>
+
+      <h4>4. Резултати</h4>
+      <p>Представените трансформации са реални резултати на клиенти. Индивидуалните резултати могат да се различават в зависимост от стартова точка, отдаденост и начин на живот.</p>
+
+      <h4>5. Интелектуална собственост</h4>
+      <p>Цялото съдържание на сайта — текстове, изображения, дизайн — е собственост на Красимир Романски и е защитено от авторско право.</p>
+
+      <h4>6. Приложимо право</h4>
+      <p>Настоящите общи условия се уреждат от българското законодателство. При спорове се прилага компетентността на българските съдилища.</p>
+
+      <h4>7. Контакт</h4>
+      <p>За въпроси: coach_romanski@gmail.com | Instagram: @coach_romanski</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
