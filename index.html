@@ -63,20 +63,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.9)
 /* MOBILE */
 @media(max-width:900px){
   .hero-split{flex-direction:column}
-  .hero-photo-col{width:100%;height:42vh;flex-shrink:0}
-  .hero-photo-col::after{background:linear-gradient(to bottom,transparent 40%,var(--bg) 100%)}
-  .hero-text-col{padding:20px 20px 32px;justify-content:flex-start}
-  .hero-h1{font-size:clamp(32px,9vw,52px);text-align:center;margin-bottom:12px}
-  .hero-sub{text-align:center;max-width:100%;font-size:15px;margin-bottom:20px}
-  .hero-badge{align-self:center;margin-bottom:16px}
-  .hero-btns{align-items:center;margin-bottom:24px;gap:12px}
+  .hero-photo-col{width:100%;height:58vh;flex-shrink:0}
+  .hero-photo-col::after{background:linear-gradient(to bottom,transparent 62%,var(--bg) 100%)}
+  .hero-photo-col img{object-position:center 20% !important}
+  .hero-text-col{padding:8px 20px 20px;justify-content:flex-start}
+  .hero-h1{font-size:clamp(30px,8.5vw,48px);text-align:center;margin-bottom:8px;line-height:1.0}
+  .hero-sub{text-align:center;max-width:100%;font-size:13px;line-height:1.5;margin-bottom:14px !important}
+  .hero-badge{display:none}
+  .hero-btns{align-items:center;margin-bottom:16px;gap:10px}
   .hero-stats{justify-content:center}
-  .hero-chevron{right:50%;transform:translateX(50%);display:none}
-  .stat{padding:0 14px}
-  .stat-num{font-size:28px}
-  .stat-label{font-size:9px}
-  .btn-gold{padding:15px 32px;font-size:14px}
-  .hero{min-height:100vh}
+  .hero-chevron{display:none}
+  .stat{padding:0 12px}
+  .stat-num{font-size:26px}
+  .stat-label{font-size:8px;letter-spacing:.1em}
+  .stat-divider{height:28px}
+  .btn-gold{padding:14px 28px;font-size:14px}
+  .hero-link{font-size:13px}
 }
 
 /* RESULTS */
@@ -266,9 +268,9 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
     </div>
     <!-- Text col -->
     <div class="hero-text-col">
-      <div class="hero-badge" style="align-self:center"><span class="label">Промени Живота Си !</span></div>
+  
       <h1 class="hero-h1" style="text-align:center;font-size:clamp(32px,4.5vw,64px);white-space:nowrap">Отслабването,<br>което <span class="gold">не мразиш.</span></h1>
-      <p class="hero-sub" style="text-align:center;margin:0 auto 40px">Помагам на заети хора да махнат корема и паласките завинаги. Резултати, които обичаш. Навици, които остават за цял живот.</p>
+      <p class="hero-sub" style="text-align:center;margin:0 auto 28px">Ще ти помогна да махнеш корема завинаги.<br>Без глад. Без крайности. За цял живот.</p>
       <div class="hero-btns" style="align-items:center">
         <button class="btn btn-gold" onclick="openModal()" style="font-size:17px;padding:20px 52px;letter-spacing:.08em">Започни Промяната</button>
         <a href="#results" class="hero-link">Виж трансформациите →</a>
@@ -429,9 +431,9 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
   <div class="final-cta-inner reveal">
     <p class="label">Следваща стъпка</p>
     <h2>ГОТОВ СИ ДА<br><span class="gold">ПРОМЕНИШ ВСИЧКО?</span></h2>
-    <p>Попълни формуляра и аз ще се свържа с теб. Започваме с кратък разговор, за да разбера дали сме подходящи един за друг. Не приемам всеки, а само хора, които са готови за дисциплина и дълготраен резултат.</p>
+    <p>Попълни формуляра. Не приемам всеки — само хора готови за дисциплина и дълготраен резултат.</p>
     <button class="btn btn-gold" onclick="openModal()" style="font-size:16px;padding:20px 52px">Започни Промяната</button>
-    <p class="final-cta-note">Отнема само 3 минути да започнеш промяната.</p>
+    <p class="final-cta-note">Отнема 3 минути.</p>
   </div>
 </section>
 
@@ -460,11 +462,9 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
     <div class="modal-body">
       <!-- HERO -->
       <div class="modal-hero">
-        <div class="eyebrow label">Опознавателен разговор</div>
         <h2>ГОТОВ СИ ДА<br><span class="gold">ПРОМЕНИШ ВСИЧКО?</span></h2>
-        <p>Попълни формуляра. Краси лично разглежда всяка заявка и ще те потърси за кратък разговор.</p>
       </div>
-      <div class="modal-note"><strong>След попълването</strong> ще разгледам отговорите ти и ще ти се обадя, за да ти обясня какви са следващите стъпки и как можем да постигнем целта ти <strong>ЗАЕДНО!</strong></div>
+      <div class="modal-note">Ще се свържа с теб лично и ще ти обясня следващите стъпки.</div>
       <!-- PROGRESS -->
       <div class="progress-wrap" style="display:none">
         <div class="progress-row"><span>ВЪПРОС <span id="curStep">1</span> ОТ 6</span><span id="pctLabel">0%</span></div>
@@ -476,7 +476,7 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
         <div class="step-form active" data-step="1">
           <div class="step-label-small">Стъпка 01 / 06</div>
           <h3>Нека се запознаем</h3>
-          <p class="step-desc">Основна информация за да може Краси да се свърже с теб.</p>
+          
           <div class="field"><label>Как се казваш?</label><input type="text" id="f-name" placeholder="Твоето име" required></div>
           <div class="field"><label>Телефонен номер</label><input type="tel" id="f-phone" placeholder="08xx xxx xxx" required></div>
           <div style="height:1px;background:#1a1a1a;margin:20px 0"></div>
@@ -485,7 +485,7 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
         <div class="step-form" data-step="2">
           <div class="step-label-small">Стъпка 02 / 06</div>
           <h3>Каква е твоята цел?</h3>
-          <div class="context-note">Краси е помогнал на над 120 мъже и жени да постигнат всяка от тези цели без да гладуват, без да тренират всеки ден и без да дават хиляди левове за добавки.</div>
+          
           <div class="options">
             <label class="option"><input type="radio" name="goal" value="3-5кг"><div class="opt-dot"></div><div class="opt-text">Да сваля 3-5 кг.</div></label>
             <label class="option"><input type="radio" name="goal" value="5-12кг"><div class="opt-dot"></div><div class="opt-text">Да сваля 5-12 кг.</div></label>
@@ -498,7 +498,7 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
         <div class="step-form" data-step="3">
           <div class="step-label-small">Стъпка 03 / 06</div>
           <h3>Какво е твоето ежедневие?</h3>
-          <p class="step-desc">Помага ни да изградим план, съобразен с твоя начин на живот.</p>
+          
           <div class="options">
             <label class="option"><input type="radio" name="daily" value="home"><div class="opt-dot"></div><div class="opt-text">Работя от вкъщи</div></label>
             <label class="option"><input type="radio" name="daily" value="office"><div class="opt-dot"></div><div class="opt-text">Работя в офис</div></label>
@@ -512,7 +512,7 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
         <div class="step-form" data-step="4">
           <div class="step-label-small">Стъпка 04 / 06</div>
           <h3>Какво се е провалило преди?</h3>
-          <p class="step-desc">Честен отговор = по-добра програма за теб.</p>
+          
           <div class="options">
             <label class="option"><input type="radio" name="fail" value="yoyo"><div class="opt-dot"></div><div class="opt-text">Свалям кг и после много бързо ги връщам (ЙО-ЙО ЕФЕКТ)</div></label>
             <label class="option"><input type="radio" name="fail" value="scale"><div class="opt-dot"></div><div class="opt-text">Кантарът изобщо не мърда.</div></label>
@@ -553,7 +553,7 @@ footer{background:var(--card);border-top:1px solid rgba(239,196,16,.15);padding:
       <div class="thankyou" id="thankyou">
         <div class="ty-check">✓</div>
         <h2>ЗАЯВКАТА ТИ<br><span class="gold">Е ПОЛУЧЕНА!</span></h2>
-        <p>Краси лично ще разгледа отговорите ти и ще те потърси скоро, за да обясни следващите стъпки и как можем да постигнем целта ти заедно.</p>
+        <p>Ще разгледам отговорите ти и ще ти се обадя скоро.</p>
         <button class="btn btn-gold" onclick="closeModal()">← Обратно към сайта</button>
       </div>
     </div>
